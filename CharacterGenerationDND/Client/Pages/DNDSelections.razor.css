@@ -1,0 +1,52 @@
+﻿body {
+}
+.container{
+   display: flex contents-center;
+   gap: 10px;
+   gap: 10px 20px;
+   row-gap: 10px;
+   column-gap: 20px;
+   flex-wrap:wrap;
+   margin: 10px auto 10px auto;
+}
+.acNameClass {
+    column-count: 3;
+    display: flex contents-center;
+    gap: 10px;
+    gap: 10px 20px;
+    row-gap: 10px;
+    column-gap: 20px;
+    flex-wrap: wrap;
+    margin: 10px 5px 10px 5px;
+}
+.nameBox {
+    background-color: lightgrey;
+    font-size:28px;
+    color: darkcyan;
+    display: flex contents-center;
+    gap: 10px;
+    gap: 10px 20px;
+    row-gap: 10px;
+    column-gap: 20px;
+    flex-wrap: wrap;
+    margin: 10px auto 10px auto;
+}
+.classAndSubclassContainer{
+    display:flex;
+    justify-content: space-between;
+    flex-direction:column;
+    background-color:lightgrey;
+}
+.classBox {
+    display: flex;
+    background-color: lightgrey;
+    font-size: 24px;
+    color: darkcyan;
+}
+.subclassBox {
+    display: flex;
+    background-color: lightgrey;
+    font-size: 18px;
+    color: darkcyan;
+    
+}

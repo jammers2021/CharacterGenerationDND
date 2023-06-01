@@ -1,0 +1,370 @@
+﻿@page "/DND"
+@using CharacterGenerationDND.DNDModelsAndServices.Services;
+@using CharacterGenerationDND.Shared.DNDModelsAndServices.Models;
+@using CharacterGenerationDND.DNDModelsAndServices.Models;
+@using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures;
+@inject ICharacterFactory _characterFactory;
+@inject NavigationManager _navigationManager;
+@using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures;
+@using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Interfaces;
+@using static CharacterGenerationDND.DNDModelsAndServices.Models.CharacterClassSelection;
+@using static CharacterGenerationDND.Shared.DNDModelsAndServices.Models.StatGeneratedMethod;
+<h3>DNDSelections</h3>
+
+@code {
+	CharacterClassSelection.ClassSelection DndClass = new();
+	string? species = null;
+	string? subclass = null;
+	int variant { get; set; } = 0;
+	string statsMethod { get; set; }
+	int level { get; set; }
+	List<int> stats = new();
+	int highestStat { get; set; }
+	int secondStat { get; set; }
+	int thirdStat { get; set; }
+	int fourthStat { get; set; }
+	int fifthStat { get; set; }
+	int sixthStat { get; set; }
+	Character createdCharacter = null;
+	
+}
+@inject IStatsGenerationMethod _statsGenerationMethod;
+@{
+	if(createdCharacter == null)
+	{
+		<div>
+			<div class="container">
+				<p>Select Class</p>
+				<InputSelect @bind-Value="DndClass">
+					@foreach (var dndClass in Enum.GetValues(typeof(ClassSelection)))
+					{
+						if (dndClass.ToString().ToLower() != "unselected" && dndClass.ToString().ToLower() != "fighter")
+						{
+							<option value="@dndClass">@dndClass</option>
+						}
+						else if (dndClass.ToString().ToLower() == "fighter")
+						{
+							<input type="number" min="0" step="1" max="1" @bind="variant" ParsingErrorMessage="select 0 for Strength and 1 Dexterity Build" />
+						}
+						else
+						{
+							<option selected value="@dndClass">@dndClass</option>
+						}
+					}
+				</InputSelect>
+			</div>
+			<div>
+				<p>Select Subclass</p>
+				<InputSelect @bind-Value="subclass">
+					@if (DndClass != ClassSelection.Unselected)
+					{
+						if (DndClass == ClassSelection.Artificer)
+						{
+							@foreach (var artificerSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Artificer.Subclasses)))
+							{
+								if (artificerSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@artificerSubclass.ToString()">@artificerSubclass</option>
+								}
+								else
+								{
+									<option selected value="@artificerSubclass.ToString();">@artificerSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Bard)
+						{
+							@foreach (var bardSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Bard.Subclasses)))
+							{
+								if (bardSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@bardSubclass.ToString()">@bardSubclass</option>
+								}
+								else
+								{
+									<option selected value="@bardSubclass.ToString();">@bardSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Barbarian)
+						{
+							@foreach (var barbarianSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Barbarian.Subclasses)))
+							{
+								if (barbarianSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@barbarianSubclass.ToString()">@barbarianSubclass</option>
+								}
+								else
+								{
+									<option selected value="@barbarianSubclass.ToString();">@barbarianSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Cleric)
+						{
+							@foreach (var clericSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Cleric.Subclasses)))
+							{
+								if (clericSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@clericSubclass.ToString()">@clericSubclass</option>
+								}
+								else
+								{
+									<option selected value="@clericSubclass.ToString();">@clericSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Druid)
+						{
+							@foreach (var druidSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Druid.Subclasses)))
+							{
+								if (druidSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@druidSubclass.ToString()">@druidSubclass</option>
+								}
+								else
+								{
+									<option selected value="@druidSubclass.ToString();">@druidSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Fighter)
+						{
+							@foreach (var fighterSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Fighter.Subclasses)))
+							{
+								if (fighterSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@fighterSubclass.ToString()">@fighterSubclass</option>
+								}
+								else
+								{
+									<option selected value="@fighterSubclass.ToString();">@fighterSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Monk)
+						{
+							@foreach (var monkSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Monk.Subclasses)))
+							{
+								if (monkSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@monkSubclass.ToString()">@monkSubclass</option>
+								}
+								else
+								{
+									<option selected value="@monkSubclass.ToString();">@monkSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Paladin)
+						{
+							@foreach (var paladinSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Paladin.Subclasses)))
+							{
+								if (paladinSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@paladinSubclass.ToString()">@paladinSubclass</option>
+								}
+								else
+								{
+									<option selected value="@paladinSubclass.ToString();">@paladinSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Ranger)
+						{
+							@foreach (var rangerSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Ranger.Subclasses)))
+							{
+								if (rangerSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@rangerSubclass.ToString()">@rangerSubclass</option>
+								}
+								else
+								{
+									<option selected value="@rangerSubclass.ToString();">@rangerSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Rogue)
+						{
+							@foreach (var rogueSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Rogue.Subclasses)))
+							{
+								if (rogueSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@rogueSubclass.ToString()">@rogueSubclass</option>
+								}
+								else
+								{
+									<option selected value="@rogueSubclass.ToString();">@rogueSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Sorcerer)
+						{
+							@foreach (var sorcererSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Sorcerer.Subclasses)))
+							{
+								if (sorcererSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@sorcererSubclass.ToString()">@sorcererSubclass</option>
+								}
+								else
+								{
+									<option selected value="@sorcererSubclass.ToString();">@sorcererSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Warlock)
+						{
+							@foreach (var warlockSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Warlock.Subclasses)))
+							{
+								if (warlockSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@warlockSubclass.ToString()">@warlockSubclass</option>
+								}
+								else
+								{
+									<option selected value="@warlockSubclass.ToString();">@warlockSubclass</option>
+								}
+							}
+						}
+						else if (DndClass == ClassSelection.Wizard)
+						{
+							@foreach (var wizardSubclass in Enum.GetValues(typeof(CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Wizard.Subclasses)))
+							{
+								if (wizardSubclass.ToString().ToLower() != "unselected")
+								{
+									<option value="@wizardSubclass.ToString()">@wizardSubclass</option>
+								}
+								else
+								{
+									<option selected value="@wizardSubclass.ToString();">@wizardSubclass</option>
+								}
+							}
+						}
+					}
+				</InputSelect>
+			</div>
+			<div class="container">
+				<p>Select Species</p>
+				<InputSelect @bind-Value="species">
+					@foreach (var dndSpecies in Enum.GetValues(typeof(SpeciesOptions.SpeciesSelection)))
+					{
+						if (dndSpecies.ToString().ToLower() != "unselected")
+						{
+							<option value="@dndSpecies.ToString().ToLower()">&nbsp;@dndSpecies</option>
+						}
+						else
+						{
+							<option selected value="@dndSpecies.ToString()">@dndSpecies</option>
+						}
+					}
+
+				</InputSelect>
+			</div>
+			<div class="container">
+				<p>Select Stat Generation Method</p>
+				<InputSelect @bind-Value="statsMethod">
+
+					@foreach (var generationMethod in Enum.GetValues(typeof(StatsGenerated)))
+					{
+						if (generationMethod.ToString().ToLower() != "unselected")
+						{
+							<option value="@statsMethod = @generationMethod.ToString().ToLower()">&nbsp;@generationMethod</option>
+						}
+						else
+						{
+							<option selected value="@generationMethod">@generationMethod</option>
+						}
+					}
+				</InputSelect>
+			</div>
+		</div>
+		<div class="container">
+			<p>Character Level</p>
+			<label>Level:&nbsp;</label><input type="number" min="1" step="1" max="20" @bind="level" ParsingErrorMessage="Must be an integer between 1-20" />
+		</div>
+		if (statsMethod != null && statsMethod != "" && statsMethod.ToLower() != "unselected")
+		{
+			if (statsMethod.ToLower() == "manual")
+			{
+				<div>
+					Enter Manual Stats Below:
+					<div class="container">
+						Primary Stat&nbsp;<input type="number" min="1" step="1" max="20" @bind="highestStat" ParsingErrorMessage="Must be an integer between 1-20" />
+						Secondary Stat&nbsp;<input type="number" min="1" step="1" max="20" @bind="secondStat" ParsingErrorMessage="Must be an integer between 1-20" />
+						Tertiary Stat&nbsp;<input type="number" min="1" step="1" max="20" @bind="thirdStat" ParsingErrorMessage="Must be an integer between 1-20" />
+					</div>
+					<div>
+						Quaternary Stat&nbsp;<input type="number" min="1" step="1" max="20" @bind="fourthStat" ParsingErrorMessage="Must be an integer between 1-20" />
+						Quinary Stat&nbsp;<input type="number" min="1" step="1" max="20" @bind="fifthStat" ParsingErrorMessage="Must be an integer between 1-20" />
+						Senary ("Dump") Stat&nbsp;<input type="number" min="1" step="1" max="20" @bind="sixthStat" ParsingErrorMessage="Must be an integer between 1-20" />
+					</div>
+				</div>
+				if (highestStat != 0 && secondStat != 0 && thirdStat != 0 && fourthStat != 0 && fifthStat != 0 && sixthStat != 0)
+				{
+					stats.RemoveAll(s => s > 0);
+					stats.Add(highestStat);
+					stats.Add(secondStat);
+					stats.Add(thirdStat);
+					stats.Add(fourthStat);
+					stats.Add(fifthStat);
+					stats.Add(sixthStat);
+				}
+				if (stats.Count == 6)
+				{
+					//Confirm Breakpoint hit first time
+					stats = _statsGenerationMethod.SelectStats(statsMethod, stats);
+				}
+			}
+			else if (statsMethod.ToLower() != "manual")
+			{
+				stats = _statsGenerationMethod.SelectStats(statsMethod);
+			}
+			else
+			{
+				<div>For Manual Complete Values for Stats</div>
+
+			}
+		}
+
+		<button type="submit" @onclick="@OnSubmitCharacter">
+			Submit
+		</button>
+	}
+	@code {
+		protected void OnSubmitCharacter(MouseEventArgs mouseEventArgs)
+		{
+			if (stats.Count == 6 && level != 0 && subclass.ToLower() != "unselected" && species.ToString().ToLower() != "unselected" && DndClass.ToString().ToLower() != "unselected")
+			{
+				createdCharacter = _characterFactory.CreateCharacter(DndClass, level, subclass, variant, species, stats);
+			}
+		}
+	}
+
+}
+	
+@{
+	if(createdCharacter != null)
+	{
+		<div class="acNameClass">
+			<div class="classAndSubclassContainer">
+				<div class="classBox">@createdCharacter.DndClass</div>
+				<div class="subclassBox">@createdCharacter.Subclass</div>
+			</div>
+			<div class="nameBox">@createdCharacter.Name</div>
+			<div class="nameBox">AC:&nbsp;@createdCharacter.ArmorClass</div>
+		</div>
+		<div>
+			<div>Proficiency:&nbsp;+@createdCharacter.ProficiencyBonus</div>
+			<div>Speed:&nbsp;@createdCharacter.Speed ft.</div>
+			<div>Initiative:&nbsp;+@createdCharacter.Initiative</div>
+			<div>HP:&nbsp;@createdCharacter.HitPoints</div>
+		</div>
+		
+
+	}
+}
+
+
+	
+	
+
