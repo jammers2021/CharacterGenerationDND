@@ -8,7 +8,7 @@ namespace CharacterGenerationDND.DNDModelsAndServices.Models
     public class Character
     {
         public ClassSelection DndClass { get; set; }
-        public List<string> ClassFeatures { get; set; } = new();
+        public List<string?> ClassFeatures { get; set; } = new();
         public int Initiative { get; set; }
         public string Species { get; set; } 
         public int HitPoints { get; set; }

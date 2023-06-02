@@ -7,11 +7,15 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Bard
 {
-    public class Eloquence: Bard, IAllCharacters
+	public class Eloquence: Bard
 	{
-		public string? Subclass { get; set; } = "College of Eloquence";
-		public string? LevelThreeClassFeature { get; set; } = "Expertise, Silver Tongue-Persuasion";
-		public string? LevelSixClassFeature { get; set; } = "CounterCharm, Unfailing Inspiration, Universal Speech";
-		public string? LevelFourteenClassFeature { get; set; } = "Magical Secrets, Infectious Inspiration";
+		public Eloquence(): base()
+		{
+			Subclass = "College of Eloquence";
+			LevelThreeClassFeature = "Expertise, Silver Tongue-Persuasion";
+			LevelSixClassFeature = "CounterCharm, Unfailing Inspiration, Universal Speech";
+			LevelFourteenClassFeature  = "Magical Secrets, Infectious Inspiration";
+		}
+		
 	}
 }

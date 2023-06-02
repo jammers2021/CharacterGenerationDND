@@ -7,12 +7,15 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Barbarian
 {
-    public class AncestralGuardians:Barbarian,IAllCharacters
+	public class AncestralGuardians : Barbarian
 	{
-		public string Subclass = "Path of Ancestral Guardians";
-		public string? LevelThreeClassFeature = "Ancestral Protector, (Primal Knowledge-Opt.)";
-		public string? LevelSixClassFeature = "Spirit Shield";
-		public string? LevelTenClassFeature = "Consult the Spirits";
-		public string? LevelFourteenClassFeature = "Vengeful Ancestors";
+		public AncestralGuardians() : base()
+		{
+			Subclass = "Path of Ancestral Guardians";
+			LevelThreeClassFeature = "Ancestral Protector, (Primal Knowledge-Opt.)";
+			LevelSixClassFeature = "Spirit Shield";
+			LevelTenClassFeature = "Consult the Spirits";
+			LevelFourteenClassFeature = "Vengeful Ancestors";
+		}
 	}
 }

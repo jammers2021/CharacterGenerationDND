@@ -7,29 +7,23 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Rogue
 {
-	public class Rogue : IAllCharacters
+	public class Rogue : AllCharacters
 	{
-		public string Class { get; set; } = "Rogue";
-		public string? Subclass { get; set; }
-		public string? LevelOneClassFeature { get; set; } = "Expertise, sneak attack(1d6), Thieves Cant";
-		public string? LevelTwoClassFeature { get; set; } = "Cunning Action";
-		public string? LevelThreeClassFeature { get; set; }
-		public string? LevelFourClassFeature { get; set; } = null;
-		public string? LevelFiveClassFeature { get; set; } = "Uncanny Dodge, sneak attack(3d6)";
-		public string? LevelSixClassFeature { get; set; } = "Expertise";
-		public string? LevelSevenClassFeature { get; set; } = "Evasion, sneak attack(4d6)";
-		public string? LevelEightClassFeature { get; set; } = null;
-		public string? LevelNineClassFeature { get; set; }
-		public string? LevelTenClassFeature { get; set; } = null;
-		public string? LevelElevenClassFeature { get; set; } = "Reliable Talent, sneak attack(6d6)";
-		public string? LevelTwelveClassFeature { get; set; } = null;
-		public string? LevelThirteenClassFeature { get; set; } 
-		public string? LevelFourteenClassFeature { get; set; } = "Blindsense";
-		public string? LevelFifteenClassFeature { get; set; } = "Slippery mind, sneak attack(8d6)";
-		public string? LevelSixteenClassFeature { get; set; } = null;
-		public string? LevelSeventeenClassFeature { get; set; } 
-		public string? LevelEighteenClassFeature { get; set; } = "Elusive";
-		public string? LevelNineteenClassFeature { get; set; } = "Sneak Attack(10d6)";
-		public string? LevelTwentyClassFeature { get; set; } = "Stroke of Luck";
+		public Rogue() : base() 
+		{
+			Class = "Rogue";
+			LevelOneClassFeature = "Expertise, sneak attack(1d6), Thieves Cant";
+			LevelTwoClassFeature = "Cunning Action";
+			LevelFiveClassFeature = "Uncanny Dodge, sneak attack(3d6)";
+			LevelSixClassFeature = "Expertise";
+			LevelSevenClassFeature = "Evasion, sneak attack(4d6)";
+			LevelElevenClassFeature = "Reliable Talent, sneak attack(6d6)";
+			LevelFourteenClassFeature = "Blindsense";
+			LevelFifteenClassFeature = "Slippery mind, sneak attack(8d6)";
+			LevelEighteenClassFeature = "Elusive";
+			LevelNineteenClassFeature = "Sneak Attack(10d6)";
+			LevelTwentyClassFeature = "Stroke of Luck";
+		}
+		
 	}
 }

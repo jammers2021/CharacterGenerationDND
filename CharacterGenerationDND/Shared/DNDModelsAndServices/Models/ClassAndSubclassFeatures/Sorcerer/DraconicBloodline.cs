@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Sorcerer
 {
-	public class DraconicBloodline: Sorcerer,IAllCharacters
+	public class DraconicBloodline: Sorcerer
 	{
-		public string? Subclass = "Draconic Bloodline";
-		public string? LevelOneClassFeature = "Dragon Ancestor, Draconic Resistance";
-		public string? LevelSixClassFeature = "Elemental Affinity";
-		public string? LevelFourteenClassFeature = "Dragon Wings";
-		public string? LevelEighteenClassFeature = "Draconic Presence";
+		public DraconicBloodline():base()
+		{
+			Subclass = "Draconic Bloodline";
+			LevelOneClassFeature = "Dragon Ancestor, Draconic Resistance";
+			LevelSixClassFeature = "Elemental Affinity";
+			LevelFourteenClassFeature = "Dragon Wings";
+			LevelEighteenClassFeature = "Draconic Presence";
+		}
 	}
 }

@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Rogue
 {
-	public class Soulknife : Rogue, IAllCharacters
+	public class Soulknife : Rogue
 	{
-		public string? Subclass = "Soulknife";
-		public string? LevelThreeClassFeature = "Psionic Power,Psychic Blades, Sneak Attack(2d6)";
-		public string? LevelNineClassFeature = "Soul Blades,Sneak Attack(5d6)";
-		public string? LevelThirteenClassFeature = "Psychic Veil, Sneak Attack(7d6)";
-		public string? LevelSeventeenClassFeature = "Rend Mind, Sneak Attack(9d6)";
+		public Soulknife() : base() 
+		{
+			Subclass = "Soulknife";
+			LevelThreeClassFeature = "Psionic Power,Psychic Blades, Sneak Attack(2d6)";
+			LevelNineClassFeature = "Soul Blades,Sneak Attack(5d6)";
+			LevelThirteenClassFeature = "Psychic Veil, Sneak Attack(7d6)";
+			LevelSeventeenClassFeature = "Rend Mind, Sneak Attack(9d6)";
+		}	
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Wizard
 {
-	public class Wizard
+	public class Wizard:AllCharacters
 	{
 
 		public string? Class { get; set; } = "Wizard";

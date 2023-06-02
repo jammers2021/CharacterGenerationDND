@@ -16,15 +16,6 @@ namespace CharacterGenerationDND
 
 			builder.Services.AddControllersWithViews();
 			builder.Services.AddRazorPages();
-			builder.Services.AddScoped<IArmorClassCalculations, ArmorClassCalculations>();
-			builder.Services.AddScoped<IModifiers, Modifiers>();
-			builder.Services.AddScoped<IHitPointCalculation, HitPointCalculation>();
-			builder.Services.AddScoped<ISpeciesSelection, SpeciesSelection>();
-			builder.Services.AddScoped<ILevelUp, LevelUp>();
-			builder.Services.AddScoped<IIntelligencePrimaryLevelUp, IntelligencePrimaryLevelUp>();
-			builder.Services.AddScoped<IWisdomPrimaryLevelUp, WisdomPrimaryLevelUp>();
-			builder.Services.AddScoped<ICharismaPrimaryLevelUp, CharismaPrimaryLevelUp>();
-			builder.Services.AddScoped<IDexterityPrimaryLevelUp, IDexterityPrimaryLevelUp>();
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Services.LevelUp
 {
-    public class LevelUp : ILevelUp
+    public class FeatLevelUp : IFeatLevelUp
     {
-        IWisdomPrimaryLevelUp _wisdomPrimaryLevelUp;
-        IIntelligencePrimaryLevelUp _intelligencePrimaryLevelUp;
-        ICharismaPrimaryLevelUp _charismaPrimaryLevelUp;
-        IDexterityPrimaryLevelUp _dexterityPrimaryLevelUp;
-        public LevelUp(IDexterityPrimaryLevelUp dexterityPrimaryLevelUp, ICharismaPrimaryLevelUp charismaPrimaryLevelUp, IIntelligencePrimaryLevelUp intelligencePrimaryLevelUp, IWisdomPrimaryLevelUp wisdomPrimaryLevelUp)
+        private IWisdomPrimaryLevelUp _wisdomPrimaryLevelUp;
+        private IIntelligencePrimaryLevelUp _intelligencePrimaryLevelUp;
+        private ICharismaPrimaryLevelUp _charismaPrimaryLevelUp;
+        private IDexterityPrimaryLevelUp _dexterityPrimaryLevelUp;
+        public FeatLevelUp(IDexterityPrimaryLevelUp dexterityPrimaryLevelUp, ICharismaPrimaryLevelUp charismaPrimaryLevelUp, IIntelligencePrimaryLevelUp intelligencePrimaryLevelUp, IWisdomPrimaryLevelUp wisdomPrimaryLevelUp)
         {
             _intelligencePrimaryLevelUp = intelligencePrimaryLevelUp;
             _wisdomPrimaryLevelUp = wisdomPrimaryLevelUp;

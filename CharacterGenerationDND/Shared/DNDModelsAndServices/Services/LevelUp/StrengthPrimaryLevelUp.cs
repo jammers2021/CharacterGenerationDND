@@ -1,4 +1,5 @@
 ﻿using CharacterGenerationDND.DNDModelsAndServices.Models;
+using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Services.LevelUp
 {
-	public class StrengthPrimaryLevelUp : IStrengthPrimaryLevelUp
+    public class StrengthPrimaryLevelUp : IStrengthPrimaryLevelUp
 	{
 		public Character LevelUpStrength(Character character)
 		{

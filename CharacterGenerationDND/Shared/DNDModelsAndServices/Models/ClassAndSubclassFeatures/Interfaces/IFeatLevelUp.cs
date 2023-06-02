@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Interfaces
 {
-    public interface ILevelUp
+    public interface IFeatLevelUp
     {
         Character StandardFeat(Character character);
         Character FighterFeat(Character character);
