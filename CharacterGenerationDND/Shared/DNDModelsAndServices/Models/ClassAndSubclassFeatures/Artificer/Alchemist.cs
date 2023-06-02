@@ -7,12 +7,16 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Artificer
 {
-    public class Alchemist : Artificer, IAllCharacters
+    public class Alchemist : Artificer
 	{
-		public string? Subclass = "Alchemist";
-		public string? LevelThreeClassFeature = "Experimental Elixir";
-		public string? LevelFiveClassFeature = "Alchemical Savant";
-		public string? LevelNineClassFeature = "Restorative Reagents";
-		public string? LevelFifteenClassFeature = "Chemical Mastery";
+		public Alchemist() : base()
+		{
+			LevelThreeClassFeature = "Experimental Elixir";
+			LevelFiveClassFeature = "Alchemical Savant";
+			Subclass = "Alchemist";
+			LevelNineClassFeature = "Restorative Reagents";
+			LevelFifteenClassFeature = "Chemical Mastery";
+		}
+		
 	}
 }

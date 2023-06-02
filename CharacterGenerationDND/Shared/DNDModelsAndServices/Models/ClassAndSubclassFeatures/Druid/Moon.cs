@@ -7,12 +7,15 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Druid
 {
-    public class Moon : Druid, IAllCharacters
+    public class Moon : Druid
 	{
-		public string? Subclass = "Circle of Moon";
-		public string? LevelTwoClassFeature = "Combat Wild Shape";
-		public string? LevelSixClassFeature = "Primal strike";
-		public string? LevelTenClassFeature = "Elemental Wild Shape";
-		public string? LevelFourteenClassFeature = "Thousand Forms";
+		public Moon():base() 
+		{
+			Subclass = "Circle of Moon";
+			LevelTwoClassFeature = "Combat Wild Shape";
+			LevelSixClassFeature = "Primal strike";
+			LevelTenClassFeature = "Elemental Wild Shape";
+			LevelFourteenClassFeature = "Thousand Forms";
+		}
 	}
 }

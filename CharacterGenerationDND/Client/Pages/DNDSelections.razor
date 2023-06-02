@@ -5,6 +5,8 @@
 @using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures;
 @inject ICharacterFactory _characterFactory;
 @inject NavigationManager _navigationManager;
+@inject IFeatLevelUp _characterLevelUp;
+@inject IStatsGenerationMethod _statsGenerationMethod;
 @using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures;
 @using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Interfaces;
 @using static CharacterGenerationDND.DNDModelsAndServices.Models.CharacterClassSelection;
@@ -28,7 +30,6 @@
 	Character createdCharacter = null;
 	
 }
-@inject IStatsGenerationMethod _statsGenerationMethod;
 @{
 	if(createdCharacter == null)
 	{
@@ -110,7 +111,7 @@
 								}
 								else
 								{
-									<option selected value="@clericSubclass.ToString();">@clericSubclass</option>
+									<option selected value="@clericSubclass.ToString()">@clericSubclass</option>
 								}
 							}
 						}
@@ -268,7 +269,7 @@
 					{
 						if (generationMethod.ToString().ToLower() != "unselected")
 						{
-							<option value="@statsMethod = @generationMethod.ToString().ToLower()">&nbsp;@generationMethod</option>
+							<option value="@generationMethod.ToString().ToLower()">&nbsp;@generationMethod</option>
 						}
 						else
 						{
@@ -358,6 +359,14 @@
 			<div>Speed:&nbsp;@createdCharacter.Speed ft.</div>
 			<div>Initiative:&nbsp;+@createdCharacter.Initiative</div>
 			<div>HP:&nbsp;@createdCharacter.HitPoints</div>
+		</div>
+		<div> Class Features:
+			@{
+				foreach (var  value in createdCharacter.ClassFeatures)
+				{
+					<div>@value</div>
+				}
+			}
 		</div>
 		
 

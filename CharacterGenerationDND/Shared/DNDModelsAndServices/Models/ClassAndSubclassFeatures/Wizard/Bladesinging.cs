@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Wizard
 {
-	public class Bladesinging
+	public class Bladesinging: Wizard
 	{
-		public string? Subclass = "Bladesinging";
-		public string? LevelTwoClassFeature = "Bladesong";
-		public string? LevelSixClassFeature = "Extra Attack";
-		public string? LevelTenClassFeature = "Song of Defense";
-		public string? LevelFourteenClassFeature = "Song of Victory";
+		public Bladesinging() : base() 
+		{
+			Subclass = "Bladesinging";
+			LevelTwoClassFeature = "Bladesong";
+			LevelSixClassFeature = "Extra Attack";
+			LevelTenClassFeature = "Song of Defense";
+			LevelFourteenClassFeature = "Song of Victory";
+		}
 	}
 }

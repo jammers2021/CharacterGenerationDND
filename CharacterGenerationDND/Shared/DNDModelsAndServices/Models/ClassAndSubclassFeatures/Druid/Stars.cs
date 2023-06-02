@@ -7,12 +7,15 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Druid
 {
-    public class Stars: Druid, IAllCharacters
+    public class Stars: Druid
 	{
-		public string? Subclass = "Circle of Stars";
-		public string? LevelTwoClassFeature = "Star Map";
-		public string? LevelSixClassFeature = "Cosmic Omen";
-		public string? LevelTenClassFeature = "Twinkling Constellations";
-		public string? LevelFourteenClassFeature = "Full of Stars";
+		public Stars() : base() 
+		{
+			Subclass = "Circle of Stars";
+			LevelTwoClassFeature = "Star Map";
+			LevelSixClassFeature = "Cosmic Omen";
+			LevelTenClassFeature = "Twinkling Constellations";
+			LevelFourteenClassFeature = "Full of Stars";
+		}
 	}
 }

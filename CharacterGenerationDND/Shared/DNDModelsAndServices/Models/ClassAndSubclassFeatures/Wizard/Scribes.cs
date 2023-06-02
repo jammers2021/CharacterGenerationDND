@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Wizard
 {
-	public class Scribes
+	public class Scribes: Wizard
 	{
-		public string? Subclass = "Order of the Scribes";
-		public string? LevelTwoClassFeature = "Wizardly Quill, Awakened Spellbook";
-		public string? LevelSixClassFeature = "Manifest Mind";
-		public string? LevelTenClassFeature = "Master Scrivener";
-		public string? LevelFourteenClassFeature = "One with the Word";
+		public Scribes() : base()
+		{
+			Subclass = "Order of the Scribes";
+			LevelTwoClassFeature = "Wizardly Quill, Awakened Spellbook";
+			LevelSixClassFeature = "Manifest Mind";
+			LevelTenClassFeature = "Master Scrivener";
+			LevelFourteenClassFeature = "One with the Word";
+		}
 	}
 }

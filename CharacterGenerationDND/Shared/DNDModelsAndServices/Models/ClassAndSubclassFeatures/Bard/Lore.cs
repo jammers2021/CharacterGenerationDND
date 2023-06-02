@@ -7,12 +7,14 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Bard
 {
-    public class Lore:Bard,IAllCharacters
+    public class Lore: Bard
 	{
-		public string? Subclass { get; set; } = "College of Lore";
-		public string? LevelThreeClassFeature { get; set; } = "Expertise, Cutting Words";
-		public string? LevelSixClassFeature { get; set; } = "CounterCharm, Additional Magical Secrets";
-		public string? LevelFourteenClassFeature { get; set; } = "Magical Secrets, Peerless Skill";
-
+		public Lore(): base() 
+		{
+			Subclass = "College of Lore";
+			LevelThreeClassFeature = "Expertise, Cutting Words";
+			LevelSixClassFeature = "CounterCharm, Additional Magical Secrets";
+			LevelFourteenClassFeature = "Magical Secrets, Peerless Skill";
+		}
 	}
 }

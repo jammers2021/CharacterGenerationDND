@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,17 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Fighter
 {
-	public class EldritchKnight
+	public class EldritchKnight: Fighter
 	{
-		public string? Subclass = "Eldritch Knight";
-		public string? LevelThreeClassFeature = "Weapon Bond, Spellcasting(Int)";
-		public string? LevelSevenClassFeature = "War Magic";
-		public string? LevelTenClassFeature = "Eldritch Strike";
-		public string? LevelFifteenClassFeature = "Arcane Charge";
-		public string? LevelEighteenClassFeature = "Improved War Magic";
+		public EldritchKnight() : base()
+		{
+			Subclass = "Eldritch Knight";
+			LevelThreeClassFeature = "Weapon Bond, Spellcasting(Int)";
+			LevelSevenClassFeature = "War Magic";
+			LevelTenClassFeature = "Eldritch Strike";
+			LevelFifteenClassFeature = "Arcane Charge";
+			LevelEighteenClassFeature = "Improved War Magic";
+		}
+		
 	}
 }

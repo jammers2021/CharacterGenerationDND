@@ -13,18 +13,20 @@ public class CharacterFactory : ICharacterFactory
 	private IModifiers _modifiers;
 	private IHitPointCalculation _hitPointCalculation;
 	private ISpeciesSelection _speciesSelection;
-	private ILevelUp _levelUp;
-	public CharacterFactory(ILevelUp levelUp, IArmorClassCalculations armorClassCalculations, IModifiers modifiers, IHitPointCalculation hitPointCalculation, ISpeciesSelection speciesSelection)
+	private ICharacterLevelUp _characterLevelUp;
+	public CharacterFactory(ICharacterLevelUp characterLevelUp, IArmorClassCalculations armorClassCalculations, IModifiers modifiers, IHitPointCalculation hitPointCalculation, ISpeciesSelection speciesSelection)
     {
         _armorClassCalculations = armorClassCalculations;
 		_modifiers = modifiers;
 		_hitPointCalculation = hitPointCalculation;
 		_speciesSelection = speciesSelection;
-		_levelUp = levelUp;
+		_characterLevelUp = characterLevelUp;
     }
     public Character CreateCharacter(ClassSelection classState, int level, string? subclass, int classVariant, string? species, List<int> stats)
 	{
-
+		//Switch case for class
+		//Class features
+		//Dictionary for class features
 
 		switch (classState)
 		{
@@ -47,26 +49,7 @@ public class CharacterFactory : ICharacterFactory
 				};
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4 )
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >=8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _hitPointCalculation.CalculateHitPoints(myCharacter);
 				myCharacter = _modifiers.CreateIntCaster(myCharacter);
@@ -105,26 +88,7 @@ public class CharacterFactory : ICharacterFactory
 				}
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _armorClassCalculations.CalculateArmorClassBarbarianUnarmored(myCharacter);
@@ -153,26 +117,7 @@ public class CharacterFactory : ICharacterFactory
 				}
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _modifiers.CreateChaCaster(myCharacter);
@@ -183,7 +128,7 @@ public class CharacterFactory : ICharacterFactory
 				}
 				if (myCharacter.Level >= 2)
 				{
-					myCharacter.Initiative += 2;
+					myCharacter.Initiative += myCharacter.ProficiencyBonus/2;
 				}
 				return myCharacter;
 
@@ -206,26 +151,7 @@ public class CharacterFactory : ICharacterFactory
 				};
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _modifiers.CreateWisCaster(myCharacter);
@@ -262,26 +188,7 @@ public class CharacterFactory : ICharacterFactory
 				}
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _modifiers.CreateWisCaster(myCharacter);
@@ -316,34 +223,7 @@ public class CharacterFactory : ICharacterFactory
 					}
 					myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 					myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-					if (myCharacter.Level >= 4)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 6)
-					{
-						_levelUp.FighterFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 8)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 12)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 14)
-					{
-						_levelUp.FighterFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 16)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 19)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
+					myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 					myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 					myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 					myCharacter = _armorClassCalculations.CalculateArmorClassWithChainMailAndShieldHeavyArmor(myCharacter);
@@ -377,34 +257,7 @@ public class CharacterFactory : ICharacterFactory
 					}
 					myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 					myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-					if (myCharacter.Level >= 4)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 6)
-					{
-						_levelUp.FighterFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 8)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 12)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 14)
-					{
-						_levelUp.FighterFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 16)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
-					if (myCharacter.Level >= 19)
-					{
-						_levelUp.StandardFeat(myCharacter);
-					}
+					myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 					myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 					myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 					myCharacter = _armorClassCalculations.CalculateArmorClassWithLeatherLightArmor(myCharacter);
@@ -456,26 +309,7 @@ public class CharacterFactory : ICharacterFactory
 					myCharacter.Subclass = subclass;
 				}
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
@@ -504,26 +338,7 @@ public class CharacterFactory : ICharacterFactory
 				}
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _modifiers.CreateChaCaster(myCharacter);
@@ -556,26 +371,7 @@ public class CharacterFactory : ICharacterFactory
 				}
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CreateWisCaster(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter); 
@@ -608,30 +404,7 @@ public class CharacterFactory : ICharacterFactory
 				}
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 10)
-				{
-					_levelUp.RogueFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _armorClassCalculations.CalculateArmorClassWithLeatherLightArmor(myCharacter);
@@ -659,26 +432,7 @@ public class CharacterFactory : ICharacterFactory
 				};
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _modifiers.CreateChaCaster(myCharacter);
@@ -703,26 +457,7 @@ public class CharacterFactory : ICharacterFactory
 				};
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _modifiers.CreateChaCaster(myCharacter);
@@ -755,26 +490,7 @@ public class CharacterFactory : ICharacterFactory
 				}
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _speciesSelection.NameAndSelectSpecies(myCharacter, species);
-				if (myCharacter.Level >= 4)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 8)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 12)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 16)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
-				if (myCharacter.Level >= 19)
-				{
-					_levelUp.StandardFeat(myCharacter);
-				}
+				myCharacter = _characterLevelUp.LevelUpCharacter(myCharacter);
 				myCharacter = _modifiers.CalculateCharacterModifiers(myCharacter);
 				myCharacter = _modifiers.CalculateStandardAttackBonuses(myCharacter);
 				myCharacter = _modifiers.CreateIntCaster(myCharacter);

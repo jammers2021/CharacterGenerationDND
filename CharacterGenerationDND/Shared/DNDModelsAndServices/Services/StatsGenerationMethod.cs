@@ -65,14 +65,14 @@ namespace CharacterGenerationDND.DNDModelsAndServices.Services
 				case "pointbuy":
 					stats = new()
 					{
-						15,15,13,10,10,8
+						8,10,10,13,15,15
 					};
 					break;
 				case "standardarray":
 				default:
 					stats = new()
 					{
-						15,14,13,12,10,8
+						8,10,12,13,14,15
 					};
 					break;
 

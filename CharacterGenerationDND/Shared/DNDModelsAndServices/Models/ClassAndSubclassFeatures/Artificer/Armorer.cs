@@ -7,15 +7,19 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Artificer
 {
-    public class Armorer : Artificer, IAllCharacters
+	public class Armorer : Artificer
 	{
-		public string? Subclass = "Armorer";
-		public string? LevelThreeClassFeature = "Right Tools for the Job, Heavy Armor Proficiency, Smith's Tools Prof, Arcane Armor, Armor Model";
-		public string? LevelFiveClassFeature = "Extra Attack";
-		public string? LevelNineClassFeature = "Armor modifications";
-		public string? LevelFifteenClassFeature = "Perfected Armor";
+		public Armorer() : base()
+		{
+			Subclass = "Armorer";
+			LevelThreeClassFeature = "Right Tools for the Job, Heavy Armor Proficiency, Smith's Tools Prof, Arcane Armor, Armor Model";
+			LevelFiveClassFeature = "Extra Attack";
+			LevelNineClassFeature = "Armor modifications";
+			LevelFifteenClassFeature = "Perfected Armor";
+		}
+
 	}
-	
+
 
 }
-	
+

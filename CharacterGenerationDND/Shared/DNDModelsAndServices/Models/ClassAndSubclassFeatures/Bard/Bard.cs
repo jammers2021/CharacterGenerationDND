@@ -7,30 +7,23 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Bard
 {
-    public class Bard : IAllCharacters
+    public class Bard : AllCharacters
 	{
-		public string Class { get; set; } = "Bard";
-		public string? Subclass { get; set; }
-		public string? LevelOneClassFeature { get; set; } = "Bardic Inspiration(d6)";
-		public string? LevelTwoClassFeature { get; set; } = "Jack of All Trades, Song of Rest(d6), (Magical Inspiration-Opt)";
-		public string? LevelThreeClassFeature { get ; set ; }
-		public string? LevelFourClassFeature { get; set; } = "(Bardic Versatility-Opt.)";
-		public string? LevelFiveClassFeature { get; set; } = "Font of Inspiration, Bardic Inspiration(d8)";
-		public string? LevelSixClassFeature { get; set; } 
-		public string? LevelSevenClassFeature { get; set; } = null;
-		public string? LevelEightClassFeature { get; set; } = "(Bardic Versatility-Opt.)";
-		public string? LevelNineClassFeature { get; set; } = "Song of Rest(d8)";
-		public string? LevelTenClassFeature { get; set; } = "Bardic Inspiration(d10), Expertise, Magical Secrets";
-		public string? LevelElevenClassFeature { get ; set ; } = null;
-		public string? LevelTwelveClassFeature { get; set; } = "(Bardic Versatility-Opt.)";
-		public string? LevelThirteenClassFeature { get; set; } = "Song of Rest (d10)";
-		public string? LevelFourteenClassFeature { get ; set ; }
-		public string? LevelFifteenClassFeature { get; set; } = "Bardic Inspiration (d12)";
-		public string? LevelSixteenClassFeature { get; set; }
-		public string? LevelSeventeenClassFeature { get; set; } = "Song of Rest (d12)";
-		public string? LevelEighteenClassFeature { get; set; } = "Magical Secrets";
-		public string? LevelNineteenClassFeature { get; set; } = "(Bardic Versatility-Opt.)";
-		public string? LevelTwentyClassFeature { get; set; } = "Superior Inspiration";
+		public Bard() : base() 
+		{
+			Class = "Bard";
+			LevelOneClassFeature = "Bardic Inspiration(d6)";
+			LevelTwoClassFeature = "Jack of All Trades, Song of Rest(d6), (Magical Inspiration-Opt)";
+			LevelFiveClassFeature = "Font of Inspiration, Bardic Inspiration(d8)";
+			LevelNineClassFeature = "Song of Rest(d8)";
+			LevelTenClassFeature = "Bardic Inspiration(d10), Expertise, Magical Secrets";
+			LevelThirteenClassFeature = "Song of Rest (d10)";
+			LevelFifteenClassFeature = "Bardic Inspiration (d12)";
+			LevelSeventeenClassFeature = "Song of Rest (d12)";
+			LevelEighteenClassFeature = "Magical Secrets";
+			LevelTwentyClassFeature = "Superior Inspiration";
+		}
+		
 		
 	}
 }

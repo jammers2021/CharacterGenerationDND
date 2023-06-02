@@ -8,29 +8,17 @@ using CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclass
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Druid
 {
-    public class Druid : IAllCharacters
+    public class Druid : AllCharacters
 	{
-		public string Class { get; set; } = "Druid";
-		public string? Subclass { get; set; }
-		public string? LevelOneClassFeature { get; set; } = "Druidic";
-		public string? LevelTwoClassFeature { get; set; }
-		public string? LevelThreeClassFeature { get; set; } = null;
-		public string? LevelFourClassFeature { get; set; } = "Wild Shape Improvement";
-		public string? LevelFiveClassFeature { get; set; } = null;
-		public string? LevelSixClassFeature { get; set; }
-		public string? LevelSevenClassFeature { get; set; } = null;
-		public string? LevelEightClassFeature { get; set; } = "Wild Shape Improvement";
-		public string? LevelNineClassFeature { get; set; } = null;
-		public string? LevelTenClassFeature { get; set; } 
-		public string? LevelElevenClassFeature { get; set; } = null;
-		public string? LevelTwelveClassFeature { get; set; } = null;
-		public string? LevelThirteenClassFeature { get; set; } = null;
-		public string? LevelFourteenClassFeature { get; set; } 
-		public string? LevelFifteenClassFeature { get; set; } = null;
-		public string? LevelSixteenClassFeature { get; set; } = null;
-		public string? LevelSeventeenClassFeature { get; set; } = null;
-		public string? LevelEighteenClassFeature { get; set; } = "Timeless Body, Beast Spells";
-		public string? LevelNineteenClassFeature { get; set; } = null;
-		public string? LevelTwentyClassFeature { get; set; } = "Archdruid";
+		public Druid():base() 
+		{
+			Class = "Druid";
+			LevelOneClassFeature = "Druidic";
+			LevelFourClassFeature = "Wild Shape Improvement";
+			LevelEightClassFeature = "Wild Shape Improvement";
+			LevelEighteenClassFeature = "Timeless Body, Beast Spells";
+			LevelTwentyClassFeature = "Archdruid";
+		}
+		
 	}
 }

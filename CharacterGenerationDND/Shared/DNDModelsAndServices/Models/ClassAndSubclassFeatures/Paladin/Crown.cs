@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Paladin
 {
-	public class Crown:Paladin, IAllCharacters
+	public class Crown: Paladin
 	{
-		public string? Subclass = "Oath of the Crown";
-		public string? LevelThreeClassFeature = "Channel Divinity: Champion Challenge + Turn the Tide";
-		public string? LevelSevenClassFeature = "Divine Allegiance";
-		public string? LevelFifteenClassFeature = "Unyielding Saint";
-		public string? LevelTwentyClassFeature = "Exalted Champion";
+		public Crown() : base() 
+		{
+			Subclass = "Oath of the Crown";
+			LevelThreeClassFeature = "Channel Divinity: Champion Challenge + Turn the Tide";
+			LevelSevenClassFeature = "Divine Allegiance";
+			LevelFifteenClassFeature = "Unyielding Saint";
+			LevelTwentyClassFeature = "Exalted Champion";
+		}
+		
 	}
 }

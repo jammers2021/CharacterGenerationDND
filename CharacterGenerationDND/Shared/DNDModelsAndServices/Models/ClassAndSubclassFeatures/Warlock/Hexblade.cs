@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace CharacterGenerationDND.Shared.DNDModelsAndServices.Models.ClassAndSubclassFeatures.Warlock
 {
-	public class Hexblade: Warlock,IAllCharacters
+	public class Hexblade: Warlock
 	{
-		public string? Subclass = "Hexblade";
-		public string? LevelOneClassFeature = "Hex Warrior";
-		public string? LevelSixClassFeature = "Accursed Specter";
-		public string? LevelTenClassFeature = "Armor of Hexes";
-		public string? LevelFourteenClassFeature = "Master of Hexes";
-
+		public Hexblade(): base() 
+		{
+			Subclass = "Hexblade";
+			LevelOneClassFeature = "Hex Warrior";
+			LevelSixClassFeature = "Accursed Specter";
+			LevelTenClassFeature = "Armor of Hexes";
+			LevelFourteenClassFeature = "Master of Hexes";
+		}
 	}
 }
